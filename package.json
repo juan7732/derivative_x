@@ -1,0 +1,23 @@
+{
+  "name": "derivative_x",
+  "version": "0.1.0",
+  "description": "A chrome extension that just takes you back",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juan7732/derivative_x.git"
+  },
+  "keywords": [
+    "Chrome",
+    "Extension"
+  ],
+  "author": "Juan Ruiz Valencia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juan7732/derivative_x/issues"
+  },
+  "homepage": "https://github.com/juan7732/derivative_x#readme"
+}
