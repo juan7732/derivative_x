@@ -1,22 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "D/DX (X)",
-    "version": "1.0",
-    "description": "The derivative of X is 1, this extension takes you back the original.",
-    "icons": {
-        "16": "icons/icon-16.png",
-        "32": "icons/icon-32.png",
-        "48": "icons/icon-48.png",
-        "128": "icons/icon-128.png"
-    },
-    "content_scripts": [
-        {
-            "js": ["scripts/content.js"],
-            "matches": [
-                "https://twitter.com/",
-                "https://twitter.com/compose/tweet",
-                "https://x.com"
-            ]
-        }
-    ]
+  "manifest_version": 3,
+  "name": "D/DX (X)",
+  "version": "1.0",
+  "description": "The derivative of X is 1, this extension takes you back the original.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["src/index.js"],
+      "matches": ["https://twitter.com/*", "https://x.com/"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/larry.svg"],
+      "matches": [
+        "*://*.twitter.com/*",
+        "*://*.x.com/*"
+      ]
+    }
+  ]
 }
