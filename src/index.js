@@ -1,3 +1,16 @@
+function changeFavicon(src) {
+  const link = document.createElement('link');
+  const oldLinks = document.querySelectorAll('link[rel*="icon"]');
+
+  oldLinks.forEach(el => el.parentNode.removeChild(el));
+
+  link.type = 'image/x-icon';
+  link.rel = 'shortcut icon';
+  link.href = src;
+
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
 function observeMutations(selector, callback, stopAfterFirstMatch = true) {
   const observer = new MutationObserver(function (mutations) {
     for (const mutation of mutations) {
@@ -5,7 +18,6 @@ function observeMutations(selector, callback, stopAfterFirstMatch = true) {
       for (const node of mutation.addedNodes) {
         if (node instanceof Element && node.querySelector(selector)) {
           callback();
-          console.log("mutation");
           if (stopAfterFirstMatch) observer.disconnect();
         }
       }
@@ -59,6 +71,10 @@ function replaceSVGWithNew(sourceSelector, svgURL) {
     });
 }
 
+const newFaviconURL = chrome.runtime.getURL("icons/larry.svg");
+
+changeFavicon(newFaviconURL);
+
 observeMutations('a[href="/home"] div svg', () => {
   replaceSVGWithNew("h1 a div svg", "icons/larry.svg");
 });
@@ -77,3 +93,4 @@ observeMutations(
   },
   (stopAfterFirstMatch = false)
 );
+
